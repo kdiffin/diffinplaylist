@@ -1,0 +1,235 @@
+body {
+  margin: 0;
+  font-family: "Metal Mania", cursive;
+  background-color: rgb(50, 13, 6);
+}
+
+.Bodyy {
+  font-family: "Poppins", sans-serif;
+  background-color: #d9c091;
+}
+nav {
+  color: #67290d;
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(52, 48, 48, 0.448);
+  width: 100%;
+  box-shadow: 0px 1px 4px rgba(117, 77, 77, 0.066);
+  align-items: center;
+}
+
+nav.pg {
+  background-color: #f3d197;
+  color: #c2ad89;
+}
+.gg-music-speaker {
+  margin-top: spx;
+  margin-right: 12px;
+}
+.nav-header {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  align-items: center;
+  margin-left: 9%;
+  width: 100%;
+}
+
+nav.pg .cloud {
+  color: white;
+  border: white solid 1px;
+}
+nav.pg .toggler--slider {
+  border-color: white;
+  background-color: #f5f5f5;
+}
+
+.switch-pg {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.image {
+  position: relative;
+  width: 250px;
+}
+
+.coverImg {
+  margin-bottom: none;
+  display: block;
+  width: 100%;
+}
+
+.toggler--slider {
+  width: 25px;
+  height: 13px;
+  background-color: #000000;
+  border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+
+.toggler--slider--circle {
+  height: 13px;
+  width: 13px;
+  background-color: rgb(126, 72, 28);
+  border-radius: 50%;
+}
+nav.pg .toggler--slider--circle {
+  background-color: #f7e0b5;
+}
+nav.pg .toggler--slider {
+  justify-content: flex-end;
+}
+.songCard {
+  margin-right: 20px;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.imageOverlay--blur {
+  backdrop-filter: blur(2px);
+}
+
+.imageOverlay > * {
+  transform: translateY(20px);
+  transition: transform 0.35s;
+}
+.imageOverlay:hover {
+  opacity: 1;
+}
+
+.imageOverlay:hover > * {
+  transform: translateY(0px);
+}
+
+.imageButton {
+  display: flex;
+}
+
+.deleteButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #c3b3b338;
+  border: 1px, solid, rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stats {
+  display: flex;
+}
+
+.starContainer {
+  justify-content: center;
+  padding-top: 10px;
+}
+.star {
+  padding-top: 20px;
+  padding-right: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(154, 74, 37);
+}
+
+.songList {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.songAttributes {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  max-width: 250px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.songTitle {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  color: #645c51;
+}
+
+.addNew {
+  cursor: pointer;
+}
+
+.addNew:active {
+  transform: scale(0.85);
+}
+
+button:active {
+  transform: scale(0.85);
+}
+
+.Forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputThing {
+  width: 71%;
+  text-decoration: none;
+  height: 18px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #423b38;
+  color: #dbd7d7;
+  justify-content: center;
+  outline: none;
+}
+
+.inputThing::placeholder {
+  text-align: center;
+}
+
+.inputThing:focus {
+  border-bottom: 2px solid #000000;
+}
+
+.coverImg:hover {
+  background-color: #00000038;
+}
+
+#firstbuttonz {
+  margin-right: 10px;
+  background-color: #752d0b5d;
+}
