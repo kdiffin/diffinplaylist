@@ -5,7 +5,7 @@ function Form(props) {
     <form className="Forms" onSubmit={props.handleSubmit}>
       <input
         type="text"
-        placeholder="Song cover"
+        placeholder="Song cover (add image url from google)"
         onChange={props.handleChange}
         name="imgLink"
         value={props.imgLink}
@@ -13,7 +13,7 @@ function Form(props) {
       />
       <input
         type="text"
-        placeholder="Song link"
+        placeholder="Album link"
         onChange={props.handleChange}
         name="songLink"
         value={props.songLink}
