@@ -50,7 +50,7 @@ function Popup(props) {
             <br />
             {artistExists && (
               <>
-                <span className="desc">Artist: {props.artist}</span>
+                <span className="desc artist">Artist: {props.artist}</span>
                 <br />
                 <br />
               </>
