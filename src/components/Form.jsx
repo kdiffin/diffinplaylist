@@ -5,7 +5,7 @@ function Form(props) {
     <form className="Forms" onSubmit={props.handleSubmit}>
       <input
         type="text"
-        placeholder="Album cover"
+        placeholder="Song cover"
         onChange={props.handleChange}
         name="imgLink"
         value={props.imgLink}
@@ -13,7 +13,7 @@ function Form(props) {
       />
       <input
         type="text"
-        placeholder="Album link"
+        placeholder="Song link"
         onChange={props.handleChange}
         name="songLink"
         value={props.songLink}
@@ -21,7 +21,7 @@ function Form(props) {
       />
       <input
         type="text"
-        placeholder="Album title"
+        placeholder="Song title"
         onChange={props.handleChange}
         name="songTitle"
         value={props.songTitle}
@@ -41,6 +41,22 @@ function Form(props) {
         onChange={props.handleChange}
         name="songGenre"
         value={props.songGenre}
+        className="inputThing"
+      />
+      <input
+        type="text"
+        placeholder="Artist"
+        onChange={props.handleChange}
+        name="artist"
+        value={props.artist}
+        className="inputThing"
+      />
+      <input
+        type="text"
+        placeholder="Album title"
+        onChange={props.handleChange}
+        name="albumTitle"
+        value={props.albumTitle}
         className="inputThing"
       />
       <textarea

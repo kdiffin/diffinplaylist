@@ -3,13 +3,32 @@ import { useState, useEffect } from "react";
 import "./Popup.css";
 function Popup(props) {
   const [descExists, setDescExists] = useState();
-  useEffect(function descExistz() {
-    if (props.description === undefined) {
+
+  const [albumTitleExists, setAlbumTitleExists] = useState();
+  const [artistExists, setArtistExists] = useState();
+
+  useEffect(function () {
+    if (props.description === undefined || props.description.length === 0) {
       setDescExists(false);
     } else {
       setDescExists(true);
     }
-    console.log(descExists);
+  }, []);
+
+  useEffect(function () {
+    if (props.albumTitle === undefined || props.albumTitle.length === 0) {
+      setAlbumTitleExists(false);
+    } else {
+      setAlbumTitleExists(true);
+    }
+  }, []);
+
+  useEffect(function () {
+    if (props.artist === undefined || props.artist.length === 0) {
+      setArtistExists(false);
+    } else {
+      setArtistExists(true);
+    }
   }, []);
 
   return (
@@ -24,13 +43,31 @@ function Popup(props) {
             {props.songTitle}
           </a>
         </h3>
-        <div className="popupStats">
+        <div className="popupStats ">
           <p className="popupcover">
             Rating: {props.songRating} <br />
             Sub-genre: {props.songGenre} <br />
             <br />
+            {artistExists && (
+              <>
+                <span className="desc">Artist: {props.artist}</span>
+                <br />
+                <br />
+              </>
+            )}
+            {albumTitleExists && (
+              <>
+                <span className="desc">Album name: {props.albumTitle}</span>
+                <br />
+                <br />
+              </>
+            )}
             {descExists && (
-              <span className="desc">Description: {props.description}</span>
+              <>
+                <span className="desc">
+                  Description: {<br />} {props.description}
+                </span>
+              </>
             )}
           </p>
         </div>

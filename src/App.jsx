@@ -10,11 +10,13 @@ import data from "./data";
 function App() {
   const [formData, setFormData] = useState({
     imgLink: "",
-    songTitle: "",
+    albumTitle: "",
     songLink: "",
     songRating: "",
     songGenre: "",
     description: "",
+    artist: "",
+    songTitle: "",
   });
 
   const [songData, setSongData] = useState(
@@ -122,6 +124,8 @@ function App() {
           songTitle={formData.songTitle}
           songLink={formData.songLink}
           description={formData.description}
+          artist={formData.artist}
+          albumTitle={formData.albumTitle}
         />
       )}
       {popUpToggle && (
@@ -134,6 +138,8 @@ function App() {
           songRating={songData[id1].songRating}
           songGenre={songData[id1].songGenre}
           description={songData[id1].description}
+          artist={songData[id1].artist}
+          albumTitle={songData[id1].albumTitle}
         />
       )}
 
