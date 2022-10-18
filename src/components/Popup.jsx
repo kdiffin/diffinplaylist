@@ -13,17 +13,11 @@ function Popup(props) {
     } else {
       setDescExists(true);
     }
-  }, []);
-
-  useEffect(function () {
     if (props.albumTitle === undefined || props.albumTitle.length === 0) {
       setAlbumTitleExists(false);
     } else {
       setAlbumTitleExists(true);
     }
-  }, []);
-
-  useEffect(function () {
     if (props.artist === undefined || props.artist.length === 0) {
       setArtistExists(false);
     } else {
