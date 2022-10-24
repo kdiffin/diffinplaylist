@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Song(props) {
-  console.log(props.songRating);
   return (
     <div className="songCard">
       <div className="image">

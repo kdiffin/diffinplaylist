@@ -1,0 +1,140 @@
+.sidebar {
+  position: fixed;
+  width: 300px;
+
+  background-color: rgb(37, 8, 3);
+  height: 100vh;
+  z-index: 100;
+  color: #67290d;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sidebar-show {
+  position: fixed;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  color: #67290d;
+  background-color: rgb(37, 8, 3);
+  height: 100vh;
+  z-index: 100;
+  opacity: 1;
+  max-width: 300px;
+  overflow-x: scroll;
+  overflow-y: wrap;
+  visibility: visible;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, visibility 0.2s ease, transform 0.3s ease;
+}
+.sidebar-show > h1,
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-show::-webkit-scrollbar {
+  width: 0.1px;
+}
+.sidebar-show::-webkit-scrollbar-track {
+  background: #00000015;
+}
+
+.sidebar-show::-webkit-scrollbar-thumb {
+  background: rgb(43, 42, 42);
+  border-radius: 20px;
+}
+
+.sidebar-show::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.sidebar__form {
+  position: relative;
+  justify-content: center;
+  margin-left: 90px;
+}
+
+.sidebar__form > button {
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+}
+
+.sidebar__form > input {
+  margin-left: -20px;
+  margin-bottom: -30px;
+}
+
+.sidebar__form > input:focus {
+  border-bottom: 2px solid #67290d;
+}
+
+.sidebar-show > ol {
+  width: 250px;
+  overflow-x: wrap;
+}
+.sidebar-show > ol > li {
+  margin-bottom: 15px;
+
+  font-size: 20px;
+  color: rgb(151, 84, 21);
+}
+
+.addplaylist__container {
+  display: flex;
+  margin-top: auto;
+  align-self: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: rgb(37, 8, 3);
+  padding-top: 10px;
+  border-top: 1px solid rgb(97, 91, 91);
+  height: 90px;
+}
+
+.addplaylist__container > h2 {
+  padding-bottom: 10px;
+}
+
+.sidebar__newPlaylist_header {
+  margin-left: 299px;
+}
+
+.sidebar__playlist-item {
+  display: flex;
+  font-size: 25px;
+
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  width: 100%;
+}
+
+.sidebar__playlist-item-delete {
+  background-color: transparent;
+  color: #645c51;
+  outline: none;
+  border: none;
+  display: none;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.sidebar__playlist-item:hover {
+  color: rgb(175, 87, 46);
+
+  border-radius: 10px;
+}
+
+.sidebar__playlist-item:hover .sidebar__playlist-item-delete {
+  display: inline;
+}

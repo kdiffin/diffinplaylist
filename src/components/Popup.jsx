@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "./Popup.css";
+import "./css-files/Popup.css";
 function Popup(props) {
   const [descExists, setDescExists] = useState();
 
