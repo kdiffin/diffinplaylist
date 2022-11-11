@@ -185,7 +185,25 @@ nav.pg .toggler--slider {
 
 a {
   text-decoration: none;
-  color: rgb(154, 74, 37);
+  color: inherit;
+}
+
+.form__submit {
+  border-style: none;
+  background-color: transparent;
+  padding: 5px;
+  font-size: large;
+
+  border-top: #423b38 3px solid;
+  border-bottom: #423b38 3px solid;
+
+  border-radius: 10px;
+
+  letter-spacing: 2px;
+
+  color: #58544e;
+  font-weight: 600;
+  font-family: "Metal Mania", cursive;
 }
 
 .songList {
@@ -209,6 +227,7 @@ a {
   width: 250px;
   display: flex;
   justify-content: center;
+  color: #67290d;
   align-content: center;
 }
 
@@ -251,11 +270,11 @@ a {
 }
 
 .inputThing:focus {
-  border-bottom: 2px solid #000000;
+  border-bottom: 2px solid #272525;
 }
 
 .coverImg:hover {
-  background-color: #00000038;
+  background-color: #000000ce;
 }
 
 #firstbuttonz {

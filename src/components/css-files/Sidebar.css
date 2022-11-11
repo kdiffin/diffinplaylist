@@ -129,12 +129,58 @@ h2 {
   margin-right: 15px;
 }
 
+.gg-trash_container {
+  width: 20px;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  padding: 5px;
+  padding-left: 9px;
+  height: 20px;
+}
+
+.sidebar__playlist-item-check {
+  background-color: transparent;
+  color: #67290d;
+  outline: none;
+  border: none;
+
+  margin-left: auto;
+  margin-right: 15px;
+}
+
 .sidebar__playlist-item:hover {
   color: rgb(175, 87, 46);
 
   border-radius: 10px;
 }
 
+.sidebar__playlist-item-show {
+  color: #67290d;
+
+  display: inline;
+}
+
 .sidebar__playlist-item:hover .sidebar__playlist-item-delete {
   display: inline;
+}
+
+.sidebar__deleteConfirmation {
+  position: fixed;
+  display: flex;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 25px;
+  z-index: 199;
+  height: 100vh;
+  color: #67290d;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar__deleteConfirmation-buttons {
+  display: flex;
+  margin-bottom: 80px;
 }

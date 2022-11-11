@@ -7,7 +7,7 @@ import Song from "./Song";
 import Form from "./Form";
 import data from "../data";
 
-function App0() {
+function App0(props) {
   const [formData, setFormData] = useState({
     imgLink: "",
     albumTitle: "",
@@ -27,6 +27,11 @@ function App0() {
   function showForms() {
     setShowForms(!showForms1);
     console.log(data);
+  }
+
+  function togglePgSwitch() {
+    setPgToggled(!pgToggled);
+    console.log(pgToggled);
   }
 
   const [pgToggled, setPgToggled] = useState(false);
@@ -88,16 +93,23 @@ function App0() {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
-    setSongData((prevSongData) => {
-      return [...prevSongData, formData];
-    });
+    if (formData.imgLink.length > 1 && formData.songLink.length > 1) {
+      event.preventDefault();
+      setSongData((prevSongData) => {
+        return [...prevSongData, formData];
+      });
 
-    localStorage;
+      localStorage;
+    } else {
+      event.preventDefault();
+
+      alert("plz enter correct parameters");
+    }
   }
 
   return (
     <div className={pgToggled ? "Bodyy" : "App"}>
+      <Navbar togglePgSwitch={togglePgSwitch} pgToggled={pgToggled} />
       <div className="buttonContainer">
         <h1 className="addNew" onClick={showForms}>
           +
@@ -132,7 +144,7 @@ function App0() {
         />
       )}
 
-      <section className="songList">{pgToggled ? singers : songs}</section>
+      <section className="songList">{!pgToggled && songs}</section>
     </div>
   );
 }

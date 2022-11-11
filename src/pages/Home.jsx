@@ -1,7 +1,15 @@
 import App0 from "../components/App0";
+import { Link, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function App() {
-  return <App0 />;
+  const { playlistId } = useParams();
+  console.log(playlistId);
+  return (
+    <>
+      <App0 />
+    </>
+  );
 }
 
 export default App;

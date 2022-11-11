@@ -6,6 +6,7 @@ function Form(props) {
       <input
         type="url"
         placeholder="Song cover (add image url from google)"
+        autoComplete="off"
         onChange={props.handleChange}
         name="imgLink"
         value={props.imgLink}
@@ -14,6 +15,7 @@ function Form(props) {
       <input
         type="url"
         placeholder="Album link"
+        autoComplete="off"
         onChange={props.handleChange}
         name="songLink"
         value={props.songLink}
@@ -22,14 +24,17 @@ function Form(props) {
       <input
         type="text"
         placeholder="Song title"
+        autoComplete="off"
         onChange={props.handleChange}
         name="songTitle"
         value={props.songTitle}
         className="inputThing"
       />
+
       <input
         type="text"
         placeholder="Rating"
+        autoComplete="off"
         onChange={props.handleChange}
         name="songRating"
         value={props.songRating}
@@ -38,6 +43,7 @@ function Form(props) {
       <input
         type="text"
         placeholder="Genre"
+        autoComplete="off"
         onChange={props.handleChange}
         name="songGenre"
         value={props.songGenre}
@@ -46,6 +52,7 @@ function Form(props) {
       <input
         type="text"
         placeholder="Artist"
+        autoComplete="off"
         onChange={props.handleChange}
         name="artist"
         value={props.artist}
@@ -54,6 +61,7 @@ function Form(props) {
       <input
         type="text"
         placeholder="Album title"
+        autoComplete="off"
         onChange={props.handleChange}
         name="albumTitle"
         value={props.albumTitle}
@@ -62,13 +70,14 @@ function Form(props) {
       <textarea
         value={props.description}
         placeholder="Description"
+        autoComplete="off"
         onChange={props.handleChange}
         name="description"
         className="inputThing"
       />
       <br />
 
-      <button>Submit</button>
+      <button className="form__submit">Submit</button>
     </form>
   );
 }

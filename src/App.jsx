@@ -8,17 +8,17 @@ import Form from "./components/Form";
 import data from "./data";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SharedLayout from "./pages/SharedLayout";
+
 import Error from "./pages/Error";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="*" element={<Error />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/:playlistId" element={<Home />} />
+
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );

@@ -39,8 +39,8 @@ function Popup(props) {
         </h3>
         <div className="popupStats ">
           <p className="popupcover">
-            Rating: {props.songRating} <br />
-            Sub-genre: {props.songGenre} <br />
+            <span>Rating: {props.songRating}</span> <br />
+            <span>Sub-genre: {props.songGenre}</span> <br />
             <br />
             {artistExists && (
               <>

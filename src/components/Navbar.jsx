@@ -4,6 +4,11 @@ import Sidebar from "./Sidebar";
 
 export default function Navbar(props) {
   const [showSidebar, setShowSidebar] = useState(true);
+  const [pgToggled, setPgToggled] = useState(false);
+  function togglePgSwitch() {
+    setPgToggled(!pgToggled);
+    console.log(pgToggled);
+  }
 
   function showSidebarFunc() {
     setShowSidebar(true);
