@@ -6,10 +6,10 @@ import { nanoid } from "nanoid";
 import Song from "./components/Song";
 import Form from "./components/Form";
 import data from "./data";
-import Home from "./pages/Home";
+import Home from "./routes/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Error from "./pages/Error";
+import Error from "./routes/Error";
 
 function App() {
   return (
