@@ -26,7 +26,9 @@ export default function Navbar(props) {
         showSidebar={showSidebar ? "sidebar-show" : "sidebar"}
       />
       <nav className={props.pgToggled ? "pg" : ""}>
-        <i className="gg-menu" onClick={showSidebarFunc}></i>
+        <div className="gg-menu-container">
+          <i className="gg-menu" onClick={showSidebarFunc}></i>
+        </div>
         <Link to="/" className="nav-header-link">
           <div className="nav-header">
             <span>
