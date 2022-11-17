@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import Root from "./routes/root";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./routes/Error";
@@ -8,7 +8,7 @@ import Error from "./routes/Error";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>hello world</div>,
+    element: <Root />,
     errorElement: <Error />,
   },
 ]);
