@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 export default function Navbar(props) {
-  const [showSidebar, setShowSidebar] = useState(true);
-  const [pgToggled, setPgToggled] = useState(false);
-  function togglePgSwitch() {
-    setPgToggled(!pgToggled);
-    console.log(pgToggled);
-  }
+  const [showSidebar, setShowSidebar] = useState(false);
 
   function showSidebarFunc() {
     setShowSidebar(true);
@@ -25,20 +20,16 @@ export default function Navbar(props) {
         hideSidebarFunc={hideSidebarFunc}
         showSidebar={showSidebar ? "sidebar-show" : "sidebar"}
       />
-      <nav className={props.pgToggled ? "pg" : ""}>
-        <div className="gg-menu-container">
-          <i className="gg-menu" onClick={showSidebarFunc}></i>
+      <nav>
+        <div className="gg-menu-container" onClick={showSidebarFunc}>
+          <i className="gg-menu"></i>
         </div>
         <Link to="/" className="nav-header-link">
           <div className="nav-header">
             <span>
               <i className="gg-music-speaker"></i>
             </span>
-            <h3 className="nav--title">
-              {props.pgToggled
-                ? "Azərbaycanın Milli Ifaçıları."
-                : "DIFFINS PLAYLIST"}
-            </h3>
+            <h3 className="nav--title">DIFFINS PLAYLIST</h3>
           </div>
         </Link>
 
@@ -55,7 +46,7 @@ export default function Navbar(props) {
               fill="currentColor"
             />
           </svg>
-          <div className="toggler--slider" onClick={props.togglePgSwitch}>
+          <div className="toggler--slider">
             <div className="toggler--slider--circle"></div>
           </div>
           <svg

@@ -53,10 +53,14 @@ nav.pg {
   margin-right: 12px;
 }
 .gg-menu {
-  margin-left: 30px;
   font-size: 4vmin;
   cursor: pointer;
   margin-right: auto;
+}
+.gg-menu-container {
+  margin-right: auto;
+  padding: 20px;
+  cursor: pointer;
 }
 .nav-header {
   display: flex;
