@@ -38,6 +38,10 @@ h2 {
   justify-content: center;
 }
 
+.sidebar-show > h2 > i {
+  font-weight: 400;
+}
+
 .sidebar-show::-webkit-scrollbar {
   width: 0.1px;
 }

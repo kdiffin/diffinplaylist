@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form(props) {
+function SongForm(props) {
   return (
     <form className="Forms" onSubmit={props.handleSubmit}>
       <input
@@ -82,4 +82,4 @@ function Form(props) {
   );
 }
 
-export default Form;
+export default SongForm;

@@ -7,7 +7,6 @@ export default function Navbar(props) {
 
   function showSidebarFunc() {
     setShowSidebar(true);
-    console.log(showSidebar);
   }
 
   function hideSidebarFunc() {

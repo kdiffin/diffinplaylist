@@ -15,10 +15,6 @@ function Sidebar(props) {
   const [showInputBox, setShowInputBox] = useState(false);
   const [playlistIndex, setPlaylistIndex] = useState();
 
-  const [playlistName, setPlaylistName] = useState({
-    playlist: "",
-  });
-
   function toggleInputBox() {
     setShowInputBox((oldinputbox) => !oldinputbox);
   }
@@ -51,25 +47,6 @@ function Sidebar(props) {
     setShowConfirmDelete(true);
   }
 
-  const PlaylistList = playlists.map((song, index) => {
-    return (
-      <div className="sidebar__playlist-item" key={nanoid()}>
-        <Link to={`/${song.playlist}`} style={{ textDecoration: "none" }}>
-          <li key={nanoid()}>{playlists[index].playlist}</li>
-        </Link>
-        <button
-          className="sidebar__playlist-item-delete"
-          onClick={(event) => getPlaylistId(event, playlists[index].id)}
-          id={playlists[index].id}
-        >
-          <div className="gg-trash_container">
-            <i className="gg-trash"></i>
-          </div>
-        </button>
-      </div>
-    );
-  });
-
   useEffect(
     function () {
       localStorage.setItem("playlists", JSON.stringify(playlists));
@@ -95,21 +72,27 @@ function Sidebar(props) {
         </span>
         <h1>Your playlists:</h1>
 
-        <ol>
-          <li>
-            <Link to={`/playlists/1`}>Your Name</Link>
-          </li>
-          <li>
-            <Link to={`/playlists/2`}>Your Friend</Link>
-          </li>
-        </ol>
+        {playlists.length ? (
+          <ol>
+            {playlists.map((playlist) => (
+              <li key={playlist.id}>
+                <Link to={`/playlists/${playlist.id}`}>
+                  {playlist.name ? <>{playlist.name}</> : <i>No Name</i>}
+                </Link>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <h2>
+            <i>no playlists</i>
+          </h2>
+        )}
 
         <div className="addplaylist__container">
           {showInputBox && (
             <Form method="post" className="sidebar__form">
               <input
                 type="text"
-                value={playlistName.playlist}
                 className="inputThing sidebar__input"
                 autoComplete="off"
                 name="playlist"
