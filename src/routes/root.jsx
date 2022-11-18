@@ -3,7 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 function root() {
-  return <></>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default root;

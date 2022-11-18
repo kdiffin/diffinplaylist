@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import "./css-files/Sidebar.css";
 
@@ -80,76 +80,51 @@ function Sidebar(props) {
     [playlists]
   );
 
-  function handleChange(event) {
-    setPlaylistName((oldPlaylistName) => {
-      return {
-        ...oldPlaylistName,
-        [event.target.name]: event.target.value,
-        id: nanoid(),
-      };
-    });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setPlaylists((prevPlaylists) => {
-      return [...prevPlaylists, playlistName];
-    });
-  }
-
   return (
     <>
       <div className={props.showSidebar}>
         <span>
-          <h1 onClick={props.hideSidebarFunc}>x</h1>
+          <h1
+            onClick={props.hideSidebarFunc}
+            style={{
+              width: "30%",
+              marginBottom: "0px",
+              marginLeft: "20px",
+              cursor: "pointer",
+            }}
+          >
+            x
+          </h1>
         </span>
         <h1>Your playlists:</h1>
 
-        <ol>{PlaylistList}</ol>
+        <ol>
+          <li>
+            <Link to={`/playlists/1`}>Your Name</Link>
+          </li>
+          <li>
+            <Link to={`/playlists/2`}>Your Friend</Link>
+          </li>
+        </ol>
 
         <div className="addplaylist__container">
           {showInputBox && (
-            <form onSubmit={handleSubmit} className="sidebar__form">
+            <Form method="post" className="sidebar__form">
               <input
                 type="text"
                 value={playlistName.playlist}
-                onChange={handleChange}
                 className="inputThing sidebar__input"
                 autoComplete="off"
                 name="playlist"
               />
               <button type="submit">submit</button>
-            </form>
+            </Form>
           )}
 
           <div className="sidebar__newPlaylist_header"></div>
           <h2 onClick={toggleInputBox}> + new playlist</h2>
         </div>
       </div>
-      {fullyConfirmDelete ? (
-        <div className="sidebar__deleteConfirmation">
-          <p>Are you sure you want to delete this playlist?</p>
-          <div className="sidebar__deleteConfirmation-buttons">
-            <button
-              className="deleteButton"
-              id="firstbuttonz"
-              onClick={(event) =>
-                deletePlaylist(event, playlists[playlistIndex].id)
-              }
-            >
-              <i className="gg-trash"></i>
-            </button>
-            <button
-              className="deleteButton"
-              onClick={() => setFullyConfirmDelete(!fullyConfirmDelete)}
-            >
-              <h2 style={{ textDecoration: "none" }}>x</h2>
-            </button>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}{" "}
     </>
   );
 }

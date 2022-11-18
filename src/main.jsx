@@ -4,12 +4,23 @@ import Root from "./routes/root";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./routes/Error";
-
+import Playlist from "./routes/playlist";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <Error />,
+    children: [
+      {
+        errorElement: <Error />,
+        children: [
+          {
+            path: "playlists/:playlistId",
+            element: <Playlist />,
+          },
+        ],
+      },
+    ],
   },
 ]);
 

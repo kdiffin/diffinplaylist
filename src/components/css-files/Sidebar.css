@@ -54,6 +54,21 @@ h2 {
   background: #555;
 }
 
+.sidebar::-webkit-scrollbar {
+  width: 0.1px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: #00000015;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgb(43, 42, 42);
+  border-radius: 20px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .sidebar__form {
   position: relative;
   justify-content: center;
