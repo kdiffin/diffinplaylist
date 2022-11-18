@@ -19,6 +19,7 @@ export default function Navbar(props) {
       <Sidebar
         hideSidebarFunc={hideSidebarFunc}
         showSidebar={showSidebar ? "sidebar-show" : "sidebar"}
+        playlists={props.playlists}
       />
       <nav>
         <div className="gg-menu-container" onClick={showSidebarFunc}>

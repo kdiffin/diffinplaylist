@@ -9,10 +9,7 @@ function Sidebar(props) {
   //then ur gonna map over playlists in the app to create a bunch of new links
   //which r then gonna each have individual songdata
 
-  const [playlists, setPlaylists] = useState(
-    JSON.parse(localStorage.getItem("playlists")) || []
-  );
-
+  const playlists = props.playlists;
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [fullyConfirmDelete, setFullyConfirmDelete] = useState(false);
   const [showInputBox, setShowInputBox] = useState(false);

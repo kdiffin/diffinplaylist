@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Popup from "./Popup";
 import { nanoid } from "nanoid";
 import Song from "./Song";
-import Form from "./Form";
+import SongForm from "./SongForm";
 import data from "../data";
 
 function App0(props) {
@@ -116,7 +116,7 @@ function App0(props) {
         </h1>
       </div>
       {showForms1 && (
-        <Form
+        <SongForm
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           songRating={formData.songRating}

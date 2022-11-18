@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Root from "./routes/root";
+import Root, { loader as rootLoader } from "./routes/root";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./routes/Error";
@@ -10,6 +10,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <Error />,
+    loader: rootLoader,
     children: [
       {
         errorElement: <Error />,
