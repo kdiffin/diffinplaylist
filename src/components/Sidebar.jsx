@@ -38,11 +38,7 @@ function Sidebar(props) {
     console.log(fullyConfirmDelete);
   }
 
-  function getPlaylistId(event, playlistId) {
-    const boolList = playlists.map((playlist) => playlist.id === playlistId);
-    const index = boolList.indexOf(true);
-    setPlaylistIndex(index);
-    console.log(playlistIndex);
+  function getPlaylistId() {
     toggleFullyConfirmDelete();
     setShowConfirmDelete(true);
   }
@@ -71,15 +67,24 @@ function Sidebar(props) {
           </h1>
         </span>
         <h1>Your playlists:</h1>
-
         {playlists.length ? (
           <ol>
             {playlists.map((playlist) => (
-              <li key={playlist.id}>
-                <Link to={`/playlists/${playlist.id}`}>
-                  {playlist.name ? <>{playlist.name}</> : <i>No Name</i>}
-                </Link>
-              </li>
+              <div className="sidebar__playlist-item" key={playlist.id}>
+                <li>
+                  <Link to={`/playlists/${playlist.id}`}>
+                    {playlist.name ? <>{playlist.name}</> : <i>No Name</i>}
+                  </Link>
+                </li>
+                <button
+                  className="sidebar__playlist-item-delete"
+                  onClick={getPlaylistId}
+                >
+                  <div className="gg-trash_container">
+                    <i className="gg-trash"></i>
+                  </div>
+                </button>
+              </div>
             ))}
           </ol>
         ) : (
@@ -87,7 +92,6 @@ function Sidebar(props) {
             <i>no playlists</i>
           </h2>
         )}
-
         <div className="addplaylist__container">
           {showInputBox && (
             <Form method="post" className="sidebar__form">
@@ -104,6 +108,24 @@ function Sidebar(props) {
           <div className="sidebar__newPlaylist_header"></div>
           <h2 onClick={toggleInputBox}> + new playlist</h2>
         </div>
+        {fullyConfirmDelete ? (
+          <div className="sidebar__deleteConfirmation">
+            <p>Are you sure you want to delete this playlist?</p>
+            <div className="sidebar__deleteConfirmation-buttons">
+              <button className="deleteButton" id="firstbuttonz">
+                <i className="gg-trash"></i>
+              </button>
+              <button
+                className="deleteButton"
+                onClick={() => setFullyConfirmDelete(!fullyConfirmDelete)}
+              >
+                <h2 style={{ textDecoration: "none" }}>x</h2>
+              </button>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}{" "}
       </div>
     </>
   );
