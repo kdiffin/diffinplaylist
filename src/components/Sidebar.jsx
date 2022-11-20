@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Form, Link } from "react-router-dom";
+import {
+  Form,
+  Link,
+  NavLink,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { nanoid } from "nanoid";
 import "./css-files/Sidebar.css";
 
@@ -50,6 +56,7 @@ function Sidebar(props) {
     [playlists]
   );
 
+  const actionurl = `playlists/${useParams().playlistId}/destroy`;
   return (
     <>
       <div className={props.showSidebar}>
@@ -70,11 +77,22 @@ function Sidebar(props) {
         {playlists.length ? (
           <ol>
             {playlists.map((playlist) => (
-              <div className="sidebar__playlist-item" key={playlist.id}>
+              <div className="sidebar__playlist-item" key={nanoid()}>
                 <li>
-                  <Link to={`/playlists/${playlist.id}`}>
-                    {playlist.name ? <>{playlist.name}</> : <i>No Name</i>}
-                  </Link>
+                  <NavLink
+                    to={`/playlists/${playlist.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive
+                        ? "active "
+                        : isPending
+                        ? "pending "
+                        : "sidebar__playlist-NavLink"
+                    }
+                  >
+                    <Link to={`/playlists/${playlist.id}`}>
+                      {playlist.name ? <>{playlist.name}</> : <i>No Name</i>}
+                    </Link>
+                  </NavLink>
                 </li>
                 <button
                   className="sidebar__playlist-item-delete"
@@ -108,25 +126,36 @@ function Sidebar(props) {
           <div className="sidebar__newPlaylist_header"></div>
           <h2 onClick={toggleInputBox}> + new playlist</h2>
         </div>
-        {fullyConfirmDelete ? (
-          <div className="sidebar__deleteConfirmation">
-            <p>Are you sure you want to delete this playlist?</p>
-            <div className="sidebar__deleteConfirmation-buttons">
-              <button className="deleteButton" id="firstbuttonz">
+      </div>
+      {fullyConfirmDelete ? (
+        <div className="sidebar__deleteConfirmation">
+          <p>Are you sure you want to delete this playlist?</p>
+          <i
+            style={{
+              fontSize: "18px",
+              marginBottom: "20px",
+              marginTop: "-10px",
+            }}
+          >
+            (You have to click on the playlist before deleting it)
+          </i>
+          <div className="sidebar__deleteConfirmation-buttons">
+            <Form method="post" action={actionurl}>
+              <button className="deleteButton firstbuttonz" type="submit">
                 <i className="gg-trash"></i>
               </button>
-              <button
-                className="deleteButton"
-                onClick={() => setFullyConfirmDelete(!fullyConfirmDelete)}
-              >
-                <h2 style={{ textDecoration: "none" }}>x</h2>
-              </button>
-            </div>
+            </Form>
+            <button
+              className="deleteButton"
+              onClick={() => setFullyConfirmDelete(!fullyConfirmDelete)}
+            >
+              <h2 style={{ textDecoration: "none" }}>x</h2>
+            </button>
           </div>
-        ) : (
-          ""
-        )}{" "}
-      </div>
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 }

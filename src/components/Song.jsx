@@ -1,19 +1,25 @@
 import React from "react";
+import { Form, useFetcher } from "react-router-dom";
 
 export default function Song(props) {
+  const fetcher = useFetcher();
   return (
-    <div className="songCard">
+    <div className={props.indexPage ? "songCard songCard--index" : "songCard"}>
       <div className="image">
         <img className="coverImg" src={props.imgLink}></img>
         <div className="imageOverlay imageOverlay--blur">
           <div className="imageButton">
-            <button
-              className="deleteButton"
-              id="firstbuttonz"
-              onClick={(event) => props.deleteNote(event, props.id)}
-            >
-              <i className="gg-trash"></i>
-            </button>
+            {!props.indexPage ? (
+              <fetcher.Form
+                className="deleteButton firstbuttonz"
+                onClick={(event) => props.deleteNote(event, props.id)}
+              >
+                <i className="gg-trash"></i>
+              </fetcher.Form>
+            ) : (
+              <></>
+            )}
+
             <button
               className="deleteButton"
               onClick={(event) => props.showPopUp(event, props.id)}

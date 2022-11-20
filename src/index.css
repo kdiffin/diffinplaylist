@@ -25,12 +25,22 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #d9c091;
 }
 
+.Index {
+  margin-top: 50px;
+}
+
 button:active {
   transform: scale(0.85);
 }
 
 button {
   cursor: pointer;
+}
+
+.loading {
+  opacity: 0.25;
+  transition: opacity 200ms;
+  transition-delay: 200ms;
 }
 
 nav {
@@ -127,6 +137,18 @@ nav.pg .toggler--slider {
   justify-content: flex-end;
 }
 .songCard {
+  margin-right: 20px;
+}
+
+.songCard--index {
+  margin-right: 50px;
+}
+
+.songCard--index p {
+  transform: scale(1.15);
+}
+.songCard--index svg {
+  transform: scale(1.1);
   margin-right: 20px;
 }
 
@@ -231,7 +253,8 @@ a {
   width: 250px;
   display: flex;
   justify-content: center;
-  color: #67290d;
+  color: #9a4a25;
+  font-size: 105%;
   align-content: center;
 }
 
@@ -281,9 +304,15 @@ a {
   background-color: #000000ce;
 }
 
-#firstbuttonz {
+.firstbuttonz {
   margin-right: 10px;
   background-color: #752d0b5d;
+  border: 1.99px solid black;
+  cursor: pointer;
+}
+
+.firstbuttonz:active {
+  transform: scale(0.85);
 }
 
 .error {
