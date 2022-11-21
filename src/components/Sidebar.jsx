@@ -19,20 +19,9 @@ function Sidebar(props) {
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
   const [fullyConfirmDelete, setFullyConfirmDelete] = useState(false);
   const [showInputBox, setShowInputBox] = useState(false);
-  const [playlistIndex, setPlaylistIndex] = useState();
 
   function toggleInputBox() {
     setShowInputBox((oldinputbox) => !oldinputbox);
-  }
-
-  function deletePlaylist(event, playlistId) {
-    event.stopPropagation();
-    setPlaylists((oldPlaylists) =>
-      playlists.filter((playlist) => playlist.id !== playlistId)
-    );
-
-    setFullyConfirmDelete(false);
-    console.log(playlists);
   }
 
   function toggleFullyConfirmDelete() {
@@ -44,17 +33,10 @@ function Sidebar(props) {
     console.log(fullyConfirmDelete);
   }
 
-  function getPlaylistId() {
+  function displayConfirmDelete() {
     toggleFullyConfirmDelete();
     setShowConfirmDelete(true);
   }
-
-  useEffect(
-    function () {
-      localStorage.setItem("playlists", JSON.stringify(playlists));
-    },
-    [playlists]
-  );
 
   const actionurl = `playlists/${useParams().playlistId}/destroy`;
   return (
@@ -90,13 +72,19 @@ function Sidebar(props) {
                     }
                   >
                     <Link to={`/playlists/${playlist.id}`}>
-                      {playlist.name ? <>{playlist.name}</> : <i>No Name</i>}
+                      {playlist.name ? (
+                        <>{playlist.name}</>
+                      ) : (
+                        <i style={{ color: "#5f301bdc", fontSize: "23px" }}>
+                          No Name
+                        </i>
+                      )}
                     </Link>
                   </NavLink>
                 </li>
                 <button
                   className="sidebar__playlist-item-delete"
-                  onClick={getPlaylistId}
+                  onClick={displayConfirmDelete}
                 >
                   <div className="gg-trash_container">
                     <i className="gg-trash"></i>
@@ -130,23 +118,24 @@ function Sidebar(props) {
       {fullyConfirmDelete ? (
         <div className="sidebar__deleteConfirmation">
           <p>Are you sure you want to delete this playlist?</p>
-          <i
-            style={{
-              fontSize: "18px",
-              marginBottom: "20px",
-              marginTop: "-10px",
-            }}
-          >
-            (You have to click on the playlist before deleting it)
-          </i>
+
           <div className="sidebar__deleteConfirmation-buttons">
-            <Form method="post" action={actionurl}>
-              <button className="deleteButton firstbuttonz" type="submit">
+            <Form
+              method="post"
+              action={actionurl}
+              onSubmit={() => setFullyConfirmDelete(false)}
+            >
+              <button
+                className="deleteButton firstbuttonz"
+                style={{ transform: "scale(1.125)" }}
+                type="submit"
+              >
                 <i className="gg-trash"></i>
               </button>
             </Form>
             <button
               className="deleteButton"
+              style={{ marginTop: "-3px" }}
               onClick={() => setFullyConfirmDelete(!fullyConfirmDelete)}
             >
               <h2 style={{ textDecoration: "none" }}>x</h2>

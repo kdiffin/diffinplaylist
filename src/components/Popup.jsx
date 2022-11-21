@@ -2,29 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./css-files/Popup.css";
 function Popup(props) {
-  const [descExists, setDescExists] = useState();
-
-  const [albumTitleExists, setAlbumTitleExists] = useState();
-  const [artistExists, setArtistExists] = useState();
-
-  useEffect(function () {
-    if (props.description === undefined || props.description.length === 0) {
-      setDescExists(false);
-    } else {
-      setDescExists(true);
-    }
-    if (props.albumTitle === undefined || props.albumTitle.length === 0) {
-      setAlbumTitleExists(false);
-    } else {
-      setAlbumTitleExists(true);
-    }
-    if (props.artist === undefined || props.artist.length === 0) {
-      setArtistExists(false);
-    } else {
-      setArtistExists(true);
-    }
-  }, []);
-
   return (
     <div className="popup">
       <div className="popup-inner">
@@ -42,21 +19,21 @@ function Popup(props) {
             <span>Rating: {props.songRating}</span> <br />
             <span>Sub-genre: {props.songGenre}</span> <br />
             <br />
-            {artistExists && (
+            {props.artist && (
               <>
                 <span className="desc artist">Artist: {props.artist}</span>
                 <br />
                 <br />
               </>
             )}
-            {albumTitleExists && (
+            {props.albumTitle && (
               <>
                 <span className="desc">Album name: {props.albumTitle}</span>
                 <br />
                 <br />
               </>
             )}
-            {descExists && (
+            {props.description && (
               <>
                 <span className="desc">
                   Description: {<br />} {props.description}

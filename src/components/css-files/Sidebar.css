@@ -43,10 +43,11 @@ h2 {
 }
 
 .sidebar-show::-webkit-scrollbar {
-  width: 0.1px;
+  width: 200px;
 }
 .sidebar-show::-webkit-scrollbar-track {
   background: #00000015;
+  width: 1px;
 }
 
 .sidebar-show::-webkit-scrollbar-thumb {
@@ -137,7 +138,6 @@ h2 {
 }
 .sidebar__playlist-item .active {
   color: rgb(170, 72, 27);
-  padding-right: 130px;
 }
 
 .sidebar__playlist-NavLink {
@@ -151,23 +151,20 @@ h2 {
 
 .sidebar__playlist-item-delete {
   background-color: transparent;
+  position: fixed;
+  margin-left: 220px;
+  margin-top: 5px;
   color: #645c51;
   outline: none;
   border: none;
   display: none;
-  margin-left: auto;
-  margin-right: 15px;
 }
 
 .gg-trash_container {
-  width: 20px;
   transform: scale(1.2);
   display: flex;
   justify-self: center;
   align-items: center;
-  padding: 5px;
-  padding-left: -30px;
-  margin-left: -30px;
 
   height: 20px;
 }
@@ -194,9 +191,10 @@ h2 {
   display: inline;
 }
 
-.sidebar__playlist-item:has(.active:hover) .sidebar__playlist-item-delete {
+.sidebar__playlist-item:has(.active) .sidebar__playlist-item-delete {
   display: inline;
 }
+
 .sidebar__playlist-item-delete:hover {
   display: inline;
 }

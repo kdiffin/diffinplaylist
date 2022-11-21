@@ -190,6 +190,8 @@ nav.pg .toggler--slider {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  transform: scale(1.1);
+
   background-color: #c3b3b338;
   border: 1px, solid, rgb(255, 255, 255);
   display: flex;
@@ -305,9 +307,13 @@ a {
 }
 
 .firstbuttonz {
-  margin-right: 10px;
+  margin-right: 13px;
   background-color: #752d0b5d;
-  border: 1.99px solid black;
+  transform: scale(1.01);
+
+  padding-bottom: px;
+  margin-top: -2px;
+  border: 2px solid black;
   cursor: pointer;
 }
 

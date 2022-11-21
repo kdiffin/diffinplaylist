@@ -1,18 +1,16 @@
 import localforage from "localforage";
-import { matchSorter } from "match-sorter";
-import sortBy from "sort-by";
+import { nanoid } from "nanoid";
 
 export async function getPlaylists() {
   let playlists = await localforage.getItem("playlists");
-  console.log(playlists);
   if (!playlists) playlists = [];
 
   return playlists;
 }
 
-export async function createPlaylist() {
+export async function createPlaylist(playlistsName) {
   let id = Math.random().toString(36).substring(2, 9);
-  let playlist = { id, songData: [] };
+  let playlist = { id, songData: [], name: playlistsName };
   let playlists = await getPlaylists();
   playlists.unshift(playlist);
   await localforage.setItem("playlists", playlists);

@@ -12,7 +12,6 @@ export default function Navbar(props) {
   function hideSidebarFunc() {
     setShowSidebar(false);
   }
-
   return (
     <>
       <Sidebar
@@ -29,7 +28,9 @@ export default function Navbar(props) {
             <span>
               <i className="gg-music-speaker"></i>
             </span>
-            <h3 className="nav--title">DIFFINS PLAYLIST</h3>
+            <h3 className="nav--title">
+              {props.playlistName ? props.playlistName : "DIFFINS PLAYLIST"}
+            </h3>
           </div>
         </Link>
 

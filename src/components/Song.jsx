@@ -1,8 +1,11 @@
 import React from "react";
-import { Form, useFetcher } from "react-router-dom";
+import { Form, useFetcher, useParams } from "react-router-dom";
 
 export default function Song(props) {
   const fetcher = useFetcher();
+  const url = useParams().playlistId;
+  const actionurl = `/playlists/${useParams().playlistId}/deleteSong`;
+
   return (
     <div className={props.indexPage ? "songCard songCard--index" : "songCard"}>
       <div className="image">
@@ -10,12 +13,23 @@ export default function Song(props) {
         <div className="imageOverlay imageOverlay--blur">
           <div className="imageButton">
             {!props.indexPage ? (
-              <fetcher.Form
+              <Form
+                method="post"
+                action={actionurl}
                 className="deleteButton firstbuttonz"
-                onClick={(event) => props.deleteNote(event, props.id)}
+                // onClick={(event) => props.deleteSong(event, props.id, url)}
               >
-                <i className="gg-trash"></i>
-              </fetcher.Form>
+                <button
+                  style={{
+                    backgroundColor: "transparent",
+                    padding: "0px",
+                  }}
+                  type="submit"
+                  name="songId"
+                  value={props.id}
+                  className="gg-trash"
+                ></button>
+              </Form>
             ) : (
               <></>
             )}
@@ -23,6 +37,7 @@ export default function Song(props) {
             <button
               className="deleteButton"
               onClick={(event) => props.showPopUp(event, props.id)}
+              button="button"
             >
               <i className="gg-loupe"></i>
             </button>

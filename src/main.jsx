@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root, {
   loader as rootLoader,
-  baction as rootAction,
+  action as rootAction,
 } from "./routes/root";
 import Error from "./routes/Error";
 import Playlist, {
@@ -12,6 +12,8 @@ import Playlist, {
   action as playlistAction,
 } from "./routes/playlist";
 import { action as destroyAction } from "./routes/destroy";
+import { action as deleteSongAction } from "./routes/deleteSong";
+
 import Index from "./routes";
 
 const router = createBrowserRouter([
@@ -31,6 +33,12 @@ const router = createBrowserRouter([
             element: <Playlist />,
             loader: playlistLoader,
             action: playlistAction,
+            children: [
+              {
+                path: "/playlists/:playlistId/deleteSong",
+                action: deleteSongAction,
+              },
+            ],
           },
           {
             path: "/playlists/:playlistId/destroy",
