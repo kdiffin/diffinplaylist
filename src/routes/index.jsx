@@ -25,7 +25,10 @@ export default function Index() {
   const songs = songData.map((song, index) => {
     return (
       <Song
-        key={nanoid()}
+        // As mentioned it in the previous commit regarding "playlist.js"
+        // Using nanoid for the key is not ideal
+        // key={nanoid()}
+        key={songData[index].id}
         {...song}
         imgCover={songData[index].imgLink}
         songTitle={songData[index].songTitle}
@@ -34,14 +37,16 @@ export default function Index() {
         songGenre={songData[index].songGenre}
         showPopUp={showPopUp}
         id={songData[index].id}
-        indexPage={true}
+        // This can be shortened
+        indexPage
       />
     );
   });
 
   return (
     <div className="Index">
-      {popUpToggle && (
+      {/* Use ternaries to avoid bugs :) */}
+      {popUpToggle ? (
         <Popup
           popUpToggle={() => popUpToggle(songData.id)}
           closePopUp={closePopUp}
@@ -53,9 +58,10 @@ export default function Index() {
           description={songData[songIndex].description}
           artist={songData[songIndex].artist}
           albumTitle={songData[songIndex].albumTitle}
-          indexPage={true}
+          // This can be shortened
+          indexPage
         />
-      )}
+      ) : null}
 
       <section className="songList">{songs}</section>
     </div>
