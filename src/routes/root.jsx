@@ -9,6 +9,8 @@ import Navbar from "../components/Navbar";
 import { getPlaylist, getPlaylists } from "../functions";
 import { createPlaylist } from "../functions";
 
+// Let your code breath :)
+
 export async function loader({ params }) {
   const playlists = await getPlaylists();
   return { playlists };
