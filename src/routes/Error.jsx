@@ -1,6 +1,10 @@
 import React from "react";
 import { Link, useRouteError } from "react-router-dom";
 
+// Only 2 suggestions here:
+// 1. You might consider adding classes to all of your components instead of inline styling just to stay consistant,
+// 2. Remove logging if not needed :)
+
 function Error() {
   const error = useRouteError();
   console.error(error);
