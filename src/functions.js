@@ -1,6 +1,13 @@
 import localforage from "localforage";
 import { nanoid } from "nanoid";
 
+// Very nice!
+// I only have 3 comments:
+// 1. I would use const everywhere instead of let, to keep your codebase less error prone
+// 2. Since you have nanoid, I would use that to generate the id here instead of doing it manually :)
+// 3. Let your code breath a bit, add a couple of empty lines between your lines/blocks.
+// An example for each comments: function createPlaylist
+
 export async function getPlaylists() {
   let playlists = await localforage.getItem("playlists");
   if (!playlists) playlists = [];
@@ -9,12 +16,13 @@ export async function getPlaylists() {
 }
 
 export async function createPlaylist(playlistsName) {
-  let id = Math.random().toString(36).substring(2, 9);
-  let playlist = { id, songData: [], name: playlistsName };
-  let playlists = await getPlaylists();
+  const playlist = { id: nanoid(), songData: [], name: playlistsName };
+
+  const playlists = await getPlaylists();
   playlists.unshift(playlist);
+
   await localforage.setItem("playlists", playlists);
-  console.log(playlists);
+
   return playlist;
 }
 
