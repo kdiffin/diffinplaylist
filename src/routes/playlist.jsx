@@ -23,8 +23,8 @@ export async function action({ request, params }) {
   console.log(inputtedData);
   const inputtedDataId = { id: nanoid() };
   // Be careful with Object.assign, as it mutates the original object,
-  // which could lead to some 
-  nasty bugs
+  // which could lead to some
+
   // If you want to create a new object you should either use spread operator,
   // or define the base object as a new object:
   /*
