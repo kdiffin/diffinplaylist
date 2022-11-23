@@ -11,6 +11,11 @@ import { nanoid } from "nanoid";
 import "./css-files/Sidebar.css";
 
 function Sidebar(props) {
+  // I would not use redux at all, react context api is much better
+  // If you really want to use something, consider these two:
+  // 1. For simple global state: Jotai: https://github.com/pmndrs/jotai
+  // 2. For a bit more complicated state: Zustand: https://github.com/pmndrs/zustand
+
   // yo u gonna need to use redux to get the playlists state to the pool
   //then ur gonna map over playlists in the app to create a bunch of new links
   //which r then gonna each have individual songdata
@@ -24,14 +29,23 @@ function Sidebar(props) {
     setShowInputBox((oldinputbox) => !oldinputbox);
   }
 
-  function toggleFullyConfirmDelete() {
-    if (showConfirmDelete === true) {
-      setFullyConfirmDelete(true);
-    } else {
-      setFullyConfirmDelete(false);
-    }
-    console.log(fullyConfirmDelete);
-  }
+  // function toggleFullyConfirmDelete() {
+    // This will cause you desync
+    // Because of closure, 'showConfirmDelete' in this scope
+    // will always stay 1 step behind the actual state
+
+  //   if (showConfirmDelete === true) {
+  //     setFullyConfirmDelete(true);
+  //   } else {
+  //     setFullyConfirmDelete(false);
+  //   }
+  //   console.log(fullyConfirmDelete);
+  // }
+
+  // You should listen to state changes instead
+  useEffect(() => {
+    setFullyConfirmDelete(showConfirmDelete)
+  }. [showConfirmDelete])
 
   function displayConfirmDelete() {
     toggleFullyConfirmDelete();
@@ -59,7 +73,8 @@ function Sidebar(props) {
         {playlists.length ? (
           <ol>
             {playlists.map((playlist) => (
-              <div className="sidebar__playlist-item" key={nanoid()}>
+              // Use a valid unique value for key prop as mentioned before
+              <div className="sidebar__playlist-item" key={playlist.id}>
                 <li>
                   <NavLink
                     to={`/playlists/${playlist.id}`}
