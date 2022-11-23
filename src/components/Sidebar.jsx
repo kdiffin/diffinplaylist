@@ -16,40 +16,12 @@ function Sidebar(props) {
   // 1. For simple global state: Jotai: https://github.com/pmndrs/jotai
   // 2. For a bit more complicated state: Zustand: https://github.com/pmndrs/zustand
 
-  // yo u gonna need to use redux to get the playlists state to the pool
-  //then ur gonna map over playlists in the app to create a bunch of new links
-  //which r then gonna each have individual songdata
-
   const playlists = props.playlists;
   const [showConfirmDelete, setShowConfirmDelete] = useState(false);
-  const [fullyConfirmDelete, setFullyConfirmDelete] = useState(false);
   const [showInputBox, setShowInputBox] = useState(false);
 
   function toggleInputBox() {
     setShowInputBox((oldinputbox) => !oldinputbox);
-  }
-
-  // function toggleFullyConfirmDelete() {
-    // This will cause you desync
-    // Because of closure, 'showConfirmDelete' in this scope
-    // will always stay 1 step behind the actual state
-
-  //   if (showConfirmDelete === true) {
-  //     setFullyConfirmDelete(true);
-  //   } else {
-  //     setFullyConfirmDelete(false);
-  //   }
-  //   console.log(fullyConfirmDelete);
-  // }
-
-  // You should listen to state changes instead
-  useEffect(() => {
-    setFullyConfirmDelete(showConfirmDelete)
-  }. [showConfirmDelete])
-
-  function displayConfirmDelete() {
-    toggleFullyConfirmDelete();
-    setShowConfirmDelete(true);
   }
 
   const actionurl = `playlists/${useParams().playlistId}/destroy`;
@@ -99,7 +71,7 @@ function Sidebar(props) {
                 </li>
                 <button
                   className="sidebar__playlist-item-delete"
-                  onClick={displayConfirmDelete}
+                  onClick={() => setShowConfirmDelete(true)}
                 >
                   <div className="gg-trash_container">
                     <i className="gg-trash"></i>
@@ -130,7 +102,7 @@ function Sidebar(props) {
           <h2 onClick={toggleInputBox}> + new playlist</h2>
         </div>
       </div>
-      {fullyConfirmDelete ? (
+      {showConfirmDelete ? (
         <div className="sidebar__deleteConfirmation">
           <p>Are you sure you want to delete this playlist?</p>
 
@@ -138,7 +110,7 @@ function Sidebar(props) {
             <Form
               method="post"
               action={actionurl}
-              onSubmit={() => setFullyConfirmDelete(false)}
+              onSubmit={() => setShowConfirmDelete(false)}
             >
               <button
                 className="deleteButton firstbuttonz"
@@ -151,7 +123,7 @@ function Sidebar(props) {
             <button
               className="deleteButton"
               style={{ marginTop: "-3px" }}
-              onClick={() => setFullyConfirmDelete(!fullyConfirmDelete)}
+              onClick={() => setShowConfirmDelete(false)}
             >
               <h2 style={{ textDecoration: "none" }}>x</h2>
             </button>
