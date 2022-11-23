@@ -13,22 +13,18 @@ export default function Song(props) {
         <div className="imageOverlay imageOverlay--blur">
           <div className="imageButton">
             {!props.indexPage ? (
-              <Form
-                method="post"
-                action={actionurl}
-                className="deleteButton firstbuttonz"
-                // onClick={(event) => props.deleteSong(event, props.id, url)}
-              >
+              <Form method="post" action={actionurl}>
                 <button
                   style={{
-                    backgroundColor: "transparent",
                     padding: "0px",
                   }}
                   type="submit"
                   name="songId"
                   value={props.id}
-                  className="gg-trash"
-                ></button>
+                  className="deleteButton firstbuttonz"
+                >
+                  <i className="gg-trash"></i>
+                </button>
               </Form>
             ) : (
               <></>

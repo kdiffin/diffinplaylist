@@ -13,6 +13,7 @@ import Playlist, {
 } from "./routes/playlist";
 import { action as destroyAction } from "./routes/destroy";
 import { action as deleteSongAction } from "./routes/deleteSong";
+import { action as playlistColorAction } from "./routes/playlistColor";
 
 import Index from "./routes";
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             path: "/playlists/:playlistId/destroy",
             action: destroyAction,
             errorElement: <div>Oops! There was an error.</div>,
+          },
+          {
+            path: "/playlists/:playlistId/playlistColor",
+            action: playlistColorAction,
           },
         ],
       },
