@@ -1,10 +1,13 @@
+import localforage from "localforage";
 import React, { useState } from "react";
-import { Form, Link, useParams } from "react-router-dom";
+import { Form, Link, useLocation, useParams } from "react-router-dom";
+import { getPlaylist } from "../functions";
 import Sidebar from "./Sidebar";
 
 export default function Navbar(props) {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showColorMenu, setShowColorMenu] = useState(false);
+  const [playlistName, setPlaylistName] = useState();
 
   function showSidebarFunc() {
     setShowSidebar(true);
@@ -15,6 +18,7 @@ export default function Navbar(props) {
   }
 
   const actionurl = `/playlists/${useParams().playlistId}/playlistColor`;
+  const isHomePage = useLocation().pathname === "/";
 
   return (
     <>
@@ -46,47 +50,52 @@ export default function Navbar(props) {
             <i className="gg-color-bucket"></i>
           </div>
         </div>
-        {showColorMenu && (
-          <Form
-            className="navbar__colorPickerFormLocal"
-            action={actionurl}
-            method="post"
-          >
-            <span className="colorPickerFormSwitcher">
-              {" "}
-              <i className="gg-globe-alt"></i>
-              <div className="toggler--slider">
-                <div className="toggler--slider--circle"></div>
-              </div>
-              <i className="gg-music-note"></i>
-            </span>
-            <span className="colorPickerFormLanguage">
-              {" "}
-              <button className="buttonEn">EN</button>{" "}
-              <span
-                style={{
-                  fontWeight: 600,
-                }}
-              >
-                |
-              </span>{" "}
-              <button>AZ</button>
-            </span>
-            <button>
-              <div className="buttonCircle dark-theme"></div>Abyss Black
-            </button>
-            <button>
-              <div className="buttonCircle light-theme"></div>Flashbang Light
-            </button>
-            <button>
-              <div className="buttonCircle cream-theme"></div>Cream
-            </button>
+        {!isHomePage ? (
+          showColorMenu ? (
+            <Form
+              className="navbar__colorPickerFormLocal"
+              action={actionurl}
+              method="post"
+            >
+              <span className="colorPickerFormSwitcher">
+                {" "}
+                <i className="gg-globe-alt"></i>
+                <div className="toggler--slider">
+                  <div className="toggler--slider--circle"></div>
+                </div>
+                <i className="gg-music-note"></i>
+              </span>
+              <span className="colorPickerFormLanguage">
+                {" "}
+                <button className="buttonEn" type="button">
+                  EN
+                </button>{" "}
+                <span
+                  style={{
+                    fontWeight: 600,
+                  }}
+                >
+                  |
+                </span>{" "}
+                <button type="button">AZ</button>
+              </span>
+              <button type="submit" name="playlistStyles" value="black">
+                <div className="buttonCircle dark-theme"></div>Abyss Black
+              </button>
+              <button type="submit" name="playlistStyles" value="light">
+                <div className="buttonCircle light-theme"></div>Flashbang Light
+              </button>
+              <button type="submit" name="playlistStyles" value="cream">
+                <div className="buttonCircle cream-theme"></div>Cream
+              </button>
 
-            <button>
-              <div className="buttonCircle diffinplaylist"></div>Diffin's Choice
-            </button>
-          </Form>
-        )}
+              <button type="submit" name="playlistStyles" value="diffin">
+                <div className="buttonCircle diffinplaylist"></div>Diffin's
+                Choice
+              </button>
+            </Form>
+          ) : null
+        ) : null}
         <div className="navbar__colorPickerFormGlobal"></div>
       </nav>
     </>

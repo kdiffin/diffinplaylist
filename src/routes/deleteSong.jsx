@@ -1,5 +1,5 @@
-import localforage from "localforage";
 import { redirect } from "react-router-dom";
+import { deleteSong } from "../functions";
 
 // Also very nice code! Nice way of using actions!
 // Only minor comments here:
@@ -7,23 +7,7 @@ import { redirect } from "react-router-dom";
 // 2. If logging is not necessary, just remove it
 
 export async function action({ params, request }) {
-  const formData = await request.formData();
+  await deleteSong(params.playlistId, request);
 
-  const songId = formData.get("songId");
-  console.log(songId);
-  const url = params.playlistId;
-  let playlists = await localforage.getItem("playlists");
-  let playlist = playlists.find((playlist) => playlist.id === url);
-
-  let filteredSongData = playlist.songData.filter((song) => song.id !== songId);
-
-  let newPlaylist = { ...playlist, songData: filteredSongData };
-  let newPlaylists = playlists.filter((playlizt) => playlizt.id !== url);
-  let boolList = playlists.map((playlizt) => playlizt.id === url);
-  let index = boolList.indexOf(true);
-  newPlaylists.splice(index, 0, newPlaylist);
-  console.log(newPlaylists);
-
-  await localforage.setItem("playlists", newPlaylists);
-  return redirect(`/playlists/${url}`);
+  return redirect(`/playlists/${params.playlistId}`);
 }

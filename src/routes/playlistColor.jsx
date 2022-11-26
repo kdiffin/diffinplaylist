@@ -1,8 +1,9 @@
-import localforage from "localforage";
 import { redirect } from "react-router-dom";
+import { changeSongColor } from "../functions";
 
 export async function action({ params, request }) {
-  console.log("hey");
   const url = params.playlistId;
+  await changeSongColor(url, request);
+
   return redirect(`/playlists/${url}`);
 }
