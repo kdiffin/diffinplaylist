@@ -90,6 +90,20 @@ export async function deleteSong(id, request) {
 }
 
 export async function changeSongColor(id, request) {
+  //what u need to do is restructure ur playlists
+  // so that its an object with 2 values: playlistArray which is just what it is rn
+  // and then playlistStyles which is objPlaylistStyles  to assign to the array
+  //after u figure that out uh its kinda easy u justadd conditional classnames depending on
+  // the value which was passed from the loader function (getplaylists)
+  //the kinda tricky part is going to be the scrollbar but i'll figure it out
+  //i'll probably set the overflow on body and #root to hidden and give the root.jsx div its own overflow
+  //also when ur styling dont forget to set fonts diff too
+  // (ths was the before code)
+  // let playlistWithStyles = playlists.push(objPlaylistStyles);
+  // await localforage.setItem("playlists", playlistWithStyles);
+  // console.log(playlists);
+
+  //first tho we're making it send a playliststyles to each playlist
   const formData = await request.formData();
 
   const playlistStyles = formData.get("playlistStyles");
@@ -97,9 +111,13 @@ export async function changeSongColor(id, request) {
   const playlists = await getPlaylists();
   const playlist = await getPlaylist(id);
 
-  let playlistWithStyles = Object.assign({}, playlist, objPlaylistStyles);
+  const playlistWithStyles = Object.assign({}, playlist, objPlaylistStyles);
+  const filteredPlaylist = playlists.filter((playlist) => playlist.id !== id);
+  const boolList = playlists.map((playlizt) => playlizt.id === id);
+  const index = boolList.indexOf(true);
 
-  console.log(playlistWithStyles);
+  filteredPlaylist.splice(index, 0, playlistWithStyles);
+  await localforage.setItem("playlists", filteredPlaylist);
 
   // let newPlaylist = { ...playlist, songData: filteredSongData };
   // let newPlaylists = playlists.filter((playlizt) => playlizt.id !== url);

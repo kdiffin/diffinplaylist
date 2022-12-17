@@ -65,7 +65,7 @@ export default function Song(props) {
             </span>
           </div>
 
-          <p className="cover">
+          <p className={`cover ${props.coverText}`}>
             Rating: {props.songRating} <br />
             Sub-genre: {props.songGenre}
           </p>

@@ -13,8 +13,7 @@ import { createPlaylist } from "../functions";
 
 export async function loader({ params }) {
   const playlists = await getPlaylists();
-  const playlist = await getPlaylist(params.playlistId);
-  return { playlists, playlist };
+  return { playlists };
 }
 
 export async function action({ request }) {
@@ -33,8 +32,6 @@ function root() {
   const navigation = useNavigation();
 
   const { playlists } = useLoaderData();
-  const { playlist } = useLoaderData();
-  console.log(playlist);
 
   return (
     <>

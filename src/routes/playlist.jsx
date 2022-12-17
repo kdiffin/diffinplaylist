@@ -21,8 +21,8 @@ export async function action({ request, params }) {
   const formData = await request.formData();
   const inputtedData = Object.fromEntries(formData);
 
-  console.log(inputtedData);
   const inputtedDataId = { id: nanoid() };
+
   // Be careful with Object.assign, as it mutates the original object,
   // which could lead to some
 
@@ -45,6 +45,7 @@ function playlist() {
   const [songIndex, setSongIndex] = useState();
 
   const playlist = useLoaderData();
+  console.log(playlist);
 
   function showPopUp(event, idz) {
     setPopUpToggle(true);
@@ -67,6 +68,19 @@ function playlist() {
         showPopUp={showPopUp}
         id={playlist.songData[index].id}
         indexPage={false}
+        coverText={
+          playlist.playlistStyles === "diffin" ? (
+            "coverDiffin"
+          ) : playlist.playlistStyles === "black" ? (
+            "coverBlack"
+          ) : playlist.playlistStyles === "light" ? (
+            "coverLight"
+          ) : playlist.playlistStyles === "cream" ? (
+            "coverCream"
+          ) : (
+            <></>
+          )
+        }
       />
     );
   });
@@ -77,7 +91,21 @@ function playlist() {
 
   return (
     // Curly brackets arenot needed for strings
-    <div className="App">
+    <div
+      className={`App ${
+        playlist.playlistStyles === "diffin" ? (
+          "diffin"
+        ) : playlist.playlistStyles === "black" ? (
+          "black"
+        ) : playlist.playlistStyles === "light" ? (
+          "light"
+        ) : playlist.playlistStyles === "cream" ? (
+          "cream"
+        ) : (
+          <></>
+        )
+      }`}
+    >
       <div className="buttonContainer">
         <h1 className="addNew" onClick={showForms}>
           +

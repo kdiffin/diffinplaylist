@@ -26,7 +26,7 @@
   z-index: 100;
   opacity: 1;
   max-width: 300px;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: wrap;
   visibility: visible;
   transform: translateX(0);
@@ -43,8 +43,9 @@ h2 {
 }
 
 .sidebar-show::-webkit-scrollbar {
-  width: 200px;
+  width: 15px;
 }
+
 .sidebar-show::-webkit-scrollbar-track {
   background: #00000015;
   width: 1px;
