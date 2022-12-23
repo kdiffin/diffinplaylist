@@ -43,7 +43,7 @@ h2 {
 }
 
 .sidebar-show::-webkit-scrollbar {
-  width: 200px;
+  width: 15px;
 }
 .sidebar-show::-webkit-scrollbar-track {
   background: #00000015;
