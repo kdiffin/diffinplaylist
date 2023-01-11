@@ -77,6 +77,8 @@ function playlist() {
             "coverLight"
           ) : playlist.playlistStyles === "cream" ? (
             "coverCream"
+          ) : playlist.playlistStyles === "blue" ? (
+            "coverBlue"
           ) : (
             <></>
           )
@@ -101,6 +103,8 @@ function playlist() {
           "light"
         ) : playlist.playlistStyles === "cream" ? (
           "cream"
+        ) : playlist.playlistStyles === "blue" ? (
+          "blue"
         ) : (
           <></>
         )

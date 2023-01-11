@@ -115,8 +115,8 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 2;
-  background-color: rgb(37, 8, 3);
   padding-top: 10px;
+  background-color: transparent;
   border-top: 1px solid rgb(97, 91, 91);
   height: 90px;
 }

@@ -7,7 +7,6 @@ import Sidebar from "./Sidebar";
 export default function Navbar(props) {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showColorMenu, setShowColorMenu] = useState(false);
-  const [playlistName, setPlaylistName] = useState();
 
   function showSidebarFunc() {
     setShowSidebar(true);
@@ -92,6 +91,9 @@ export default function Navbar(props) {
               <button type="submit" name="playlistStyles" value="diffin">
                 <div className="buttonCircle diffinplaylist"></div>Diffin's
                 Choice
+              </button>
+              <button type="submit" name="playlistStyles" value="blue">
+                <div className="buttonCircle blue-theme"></div>Baby Blue
               </button>
             </Form>
           ) : null

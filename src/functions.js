@@ -95,7 +95,7 @@ export async function changeSongColor(id, request) {
   // and then playlistStyles which is objPlaylistStyles  to assign to the array
   //after u figure that out uh its kinda easy u justadd conditional classnames depending on
   // the value which was passed from the loader function (getplaylists)
-  //the kinda tricky part is going to be the scrollbar but i'll figure it out
+  //the kinda tricky part is going to be the scrollbar but i'll figure it out (i did now)
   //i'll probably set the overflow on body and #root to hidden and give the root.jsx div its own overflow
   //also when ur styling dont forget to set fonts diff too
   // (ths was the before code)
@@ -105,8 +105,8 @@ export async function changeSongColor(id, request) {
 
   //first tho we're making it send a playliststyles to each playlist
   const formData = await request.formData();
-
   const playlistStyles = formData.get("playlistStyles");
+
   const objPlaylistStyles = { playlistStyles: playlistStyles };
   const playlists = await getPlaylists();
   const playlist = await getPlaylist(id);
