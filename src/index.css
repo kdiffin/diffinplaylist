@@ -46,6 +46,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 body:has(.black) nav {
   background: #000;
+  color: white;
 }
 
 body:has(.black)::-webkit-scrollbar-track {
@@ -54,10 +55,12 @@ body:has(.black)::-webkit-scrollbar-track {
 
 body:has(.black) .sidebar-show {
   background: #000;
+  color: white;
 }
 
 body:has(.black) .navbar__colorPickerFormLocal {
   background: #000;
+  color: white;
 }
 
 body:has(.light) nav {
