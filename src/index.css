@@ -45,22 +45,22 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 body:has(.black) nav {
-  background: #000;
-  color: white;
+  background: #191919;
+  color: #5d3838;
 }
 
 body:has(.black)::-webkit-scrollbar-track {
-  background-color: #000;
+  background-color: #191919;
 }
 
 body:has(.black) .sidebar-show {
-  background: #000;
-  color: white;
+  background: #191919;
+  color: #5d3838;
 }
 
 body:has(.black) .navbar__colorPickerFormLocal {
-  background: #000;
-  color: white;
+  background: #191919;
+  color: rgb(216, 208, 208);
 }
 
 body:has(.light) nav {
@@ -123,9 +123,9 @@ body:has(.blue) .navbar__colorPickerFormLocal {
 }
 
 .black {
-  background: linear-gradient(180deg, rgba(0, 0, 0) 0%, rgb(19, 18, 18) 80.9%);
+  background: #191919;
 
-  color: #d4d4d4;
+  color: #5d3838;
 }
 .light {
   border-top: rgba(0, 0, 0, 0.132) solid 1px;
@@ -148,7 +148,7 @@ body:has(.blue) .navbar__colorPickerFormLocal {
   color: black;
 }
 .coverBlack {
-  color: #d4d4d4;
+  color: #493333;
 }
 .coverLight {
   color: black;
