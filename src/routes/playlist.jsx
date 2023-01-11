@@ -69,19 +69,17 @@ function playlist() {
         id={playlist.songData[index].id}
         indexPage={false}
         coverText={
-          playlist.playlistStyles === "diffin" ? (
-            "coverDiffin"
-          ) : playlist.playlistStyles === "black" ? (
-            "coverBlack"
-          ) : playlist.playlistStyles === "light" ? (
-            "coverLight"
-          ) : playlist.playlistStyles === "cream" ? (
-            "coverCream"
-          ) : playlist.playlistStyles === "blue" ? (
-            "coverBlue"
-          ) : (
-            <></>
-          )
+          playlist.playlistStyles === "diffin"
+            ? "coverDiffin"
+            : playlist.playlistStyles === "black"
+            ? "coverBlack"
+            : playlist.playlistStyles === "light"
+            ? "coverLight"
+            : playlist.playlistStyles === "cream"
+            ? "coverCream"
+            : playlist.playlistStyles === "blue"
+            ? "coverBlue"
+            : "coverDiffin"
         }
       />
     );
@@ -95,19 +93,17 @@ function playlist() {
     // Curly brackets arenot needed for strings
     <div
       className={`App ${
-        playlist.playlistStyles === "diffin" ? (
-          "diffin"
-        ) : playlist.playlistStyles === "black" ? (
-          "black"
-        ) : playlist.playlistStyles === "light" ? (
-          "light"
-        ) : playlist.playlistStyles === "cream" ? (
-          "cream"
-        ) : playlist.playlistStyles === "blue" ? (
-          "blue"
-        ) : (
-          <></>
-        )
+        playlist.playlistStyles === "diffin"
+          ? "diffin"
+          : playlist.playlistStyles === "black"
+          ? "black"
+          : playlist.playlistStyles === "light"
+          ? "light"
+          : playlist.playlistStyles === "cream"
+          ? "cream"
+          : playlist.playlistStyles === "blue"
+          ? "blue"
+          : "diffin"
       }`}
     >
       <div className="buttonContainer">
