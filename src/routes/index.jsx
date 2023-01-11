@@ -37,6 +37,7 @@ export default function Index() {
         songGenre={songData[index].songGenre}
         showPopUp={showPopUp}
         id={songData[index].id}
+        coverText="coverDiffin"
         // This can be shortened
         indexPage
       />

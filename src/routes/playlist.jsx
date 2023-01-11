@@ -20,8 +20,9 @@ export async function loader({ params }) {
 export async function action({ request, params }) {
   const formData = await request.formData();
   const inputtedData = Object.fromEntries(formData);
-  console.log(inputtedData);
+
   const inputtedDataId = { id: nanoid() };
+
   // Be careful with Object.assign, as it mutates the original object,
   // which could lead to some
 
@@ -29,12 +30,12 @@ export async function action({ request, params }) {
   // or define the base object as a new object:
   /*
     1. With Spread:
-      const inputtedDataWithId = { ...inputtedData, ...inputtedDataId };
-
+    
     2. Using Object.assign:
-      const inputtedDataWithId = Object.assign({}, inputtedData, inputtedDataId);
+    const inputtedDataWithId = Object.assign({}, inputtedData, inputtedDataId);
+    const inputtedDataWithId = { ...inputtedData, ...inputtedDataId };
   */
-  const inputtedDataWithId = Object.assign(inputtedData, inputtedDataId);
+  const inputtedDataWithId = Object.assign({}, inputtedData, inputtedDataId);
   await updatePlaylist(params.playlistId, inputtedDataWithId);
 }
 
@@ -44,6 +45,7 @@ function playlist() {
   const [songIndex, setSongIndex] = useState();
 
   const playlist = useLoaderData();
+  console.log(playlist);
 
   function showPopUp(event, idz) {
     setPopUpToggle(true);
@@ -53,45 +55,9 @@ function playlist() {
     setSongIndex(index);
   }
 
-  // This could be (probably) extracted into the functions.js
-  // Try to use const whenever you can
-  async function deleteSong(event, songId, url) {
-    let playlists = await localforage.getItem("playlists");
-    let playlist = playlists.find((playlist) => playlist.id === url);
-
-    // You should probably guard against "playlist" being undefined,
-    // as find will return (undefined | T)
-    let filteredSongData = playlist.songData.filter(
-      (song) => song.id !== songId
-    );
-
-    let newPlaylist = { ...playlist, songData: filteredSongData };
-    let newPlaylists = playlists.filter((playlizt) => playlizt.id !== url);
-    // You can use concat instead of push:
-    /*
-      1.
-        const filteredPlaylist = playlists.filter((playlizt) => playlizt.id !== url);
-        newPlaylists.concat({ ...playlist, songData: filteredSongData })
-
-      2.
-        const newPlaylist = [
-          ...playlists.filter((playlizt) => playlizt.id !== url),
-          { ...playlist, songData: filteredSongData },
-        ]
-    */
-    newPlaylists.push(newPlaylist);
-
-    await localforage.setItem("playlists", newPlaylists);
-    return redirect(`/playlists/${playlist.url}`);
-  }
-
   const songs = playlist.songData.map((song, index) => {
     return (
       <Song
-        // This is very bad practice, you are silencing the warning/error below.
-        // In the end it is the same as not defining a key.
-        // key={nanoid()}
-        // You should be using a uniyue key instead:
         key={playlist.songData[index].id}
         {...song}
         imgCover={playlist.songData[index].imgLink}
@@ -102,7 +68,21 @@ function playlist() {
         showPopUp={showPopUp}
         id={playlist.songData[index].id}
         indexPage={false}
-        deleteSong={deleteSong}
+        coverText={
+          playlist.playlistStyles === "diffin" ? (
+            "coverDiffin"
+          ) : playlist.playlistStyles === "black" ? (
+            "coverBlack"
+          ) : playlist.playlistStyles === "light" ? (
+            "coverLight"
+          ) : playlist.playlistStyles === "cream" ? (
+            "coverCream"
+          ) : playlist.playlistStyles === "blue" ? (
+            "coverBlue"
+          ) : (
+            <></>
+          )
+        }
       />
     );
   });
@@ -113,7 +93,23 @@ function playlist() {
 
   return (
     // Curly brackets arenot needed for strings
-    <div className="App">
+    <div
+      className={`App ${
+        playlist.playlistStyles === "diffin" ? (
+          "diffin"
+        ) : playlist.playlistStyles === "black" ? (
+          "black"
+        ) : playlist.playlistStyles === "light" ? (
+          "light"
+        ) : playlist.playlistStyles === "cream" ? (
+          "cream"
+        ) : playlist.playlistStyles === "blue" ? (
+          "blue"
+        ) : (
+          <></>
+        )
+      }`}
+    >
       <div className="buttonContainer">
         <h1 className="addNew" onClick={showForms}>
           +

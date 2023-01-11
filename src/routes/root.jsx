@@ -18,14 +18,19 @@ export async function loader({ params }) {
 
 export async function action({ request }) {
   const formData = await request.formData();
+
   const updates = Object.fromEntries(formData);
+
   const playlistName = updates.playlist;
+
   const playlist = await createPlaylist(playlistName);
+
   return redirect(`/playlists/${playlist.id}`);
 }
 
 function root() {
   const navigation = useNavigation();
+
   const { playlists } = useLoaderData();
 
   return (

@@ -1,14 +1,32 @@
+:root {
+  /* on black its 0,0,0 */
+  /* on cream its 238, 238, 225 */
+  --background-base: 52, 28, 28;
+}
+
+/* diffin mode: bg background-color: ;
+  color: #9a4a25; */
+/* body::-webkit-scrollbar-thumb {
+  background: rgb(39, 35, 35);
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */
+
 body {
   margin: 0;
   font-family: "Metal Mania", cursive;
-  background-color: rgb(50, 13, 6);
+  background-color: #320d06;
+  color: #9a4a25;
 }
 
 body::-webkit-scrollbar {
   width: 10px;
 }
 body::-webkit-scrollbar-track {
-  background-color: #270d01;
+  background-color: rgba(var(--background-base));
 }
 
 body::-webkit-scrollbar-thumb {
@@ -20,11 +38,124 @@ body::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
+.App {
+  min-height: 100vh;
+
+  height: 100%;
+}
+
+body:has(.black) nav {
+  background: #000;
+}
+
+body:has(.black)::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+body:has(.black) .sidebar-show {
+  background: #000;
+}
+
+body:has(.black) .navbar__colorPickerFormLocal {
+  background: #000;
+}
+
+body:has(.light) nav {
+  background: rgb(248, 248, 248);
+}
+
+body:has(.light)::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+body:has(.light) .sidebar-show {
+  background: rgb(248, 248, 248);
+}
+
+body:has(.light) .navbar__colorPickerFormLocal {
+  background: rgb(248, 248, 248);
+  color: black;
+}
+
+body:has(.cream) nav {
+  background-color: rgb(235, 235, 226);
+}
+
+body:has(.cream)::-webkit-scrollbar-track {
+  background-color: rgb(235, 235, 226);
+}
+
+body:has(.cream) .sidebar-show {
+  background-color: rgb(235, 235, 226);
+}
+
+body:has(.cream) .navbar__colorPickerFormLocal {
+  background-color: rgb(235, 235, 226);
+  color: black;
+}
+
+body:has(.blue) nav {
+  background: #e5fbff;
+  color: #144272;
+}
+
+body:has(.blue)::-webkit-scrollbar-track {
+  background: #e5fbff;
+}
+
+body:has(.blue) .sidebar-show {
+  background: #e5fbff;
+  color: #144272;
+}
+
+body:has(.blue) .navbar__colorPickerFormLocal {
+  background: #e5fbff;
+
+  color: black;
+}
+
+.diffin {
+  background-color: #320d06;
+  color: #9a4a25;
+}
+
+.black {
+  background: linear-gradient(180deg, rgba(0, 0, 0) 0%, rgb(19, 18, 18) 80.9%);
+
+  color: #d4d4d4;
+}
+.light {
+  border-top: rgba(0, 0, 0, 0.132) solid 1px;
+  background-color: white;
+}
+.cream {
+  background-color: rgb(235, 235, 226);
+  color: #4c2818;
+}
+.blue {
+  background: #e5fbff;
+  color: #144272;
+}
 .Bodyy {
   font-family: "Poppins", sans-serif;
   background-color: #d9c091;
 }
 
+.coverDiffin {
+  color: black;
+}
+.coverBlack {
+  color: #d4d4d4;
+}
+.coverLight {
+  color: black;
+}
+.coverCream {
+  color: black;
+}
+.coverBlue {
+  color: #144272;
+}
 .Index {
   margin-top: 50px;
 }
@@ -37,7 +168,7 @@ button {
   cursor: pointer;
 }
 
-.loading {
+.loading .songCard {
   opacity: 0.25;
   transition: opacity 200ms;
   transition-delay: 200ms;
@@ -48,7 +179,8 @@ nav {
   display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color: rgba(52, 48, 48, 0.448);
+  background-color: rgba(var(--background-base));
+
   width: 100%;
   box-shadow: 0px 1px 4px rgba(117, 77, 77, 0.066);
   align-items: center;
@@ -75,11 +207,11 @@ nav.pg {
 .nav-header {
   display: flex;
   margin-right: auto;
+  color: inherit;
   align-items: center;
 }
 
 .nav-header-link {
-  color: #67290d;
   margin-right: auto;
   margin-left: 3.5%;
 }
@@ -93,10 +225,28 @@ nav.pg .toggler--slider {
   background-color: #f5f5f5;
 }
 
-.switch-pg {
+.switchColor {
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  margin-right: 20px;
+  cursor: pointer;
+  margin-left: 65px;
+  width: 23px;
+  height: 23px;
+  background: #b6abab;
+  border-radius: 50%;
+  color: black;
+  border: 2px solid #000;
+}
+
+.switchColor:active {
+  transform: scale(0.85);
+}
+
+.color-picker--container {
+  transform: scale(0.75);
+  padding-left: 7px;
+  padding-top: 8px;
 }
 
 .image {
@@ -108,6 +258,11 @@ nav.pg .toggler--slider {
   margin-bottom: none;
   display: block;
   width: 100%;
+}
+
+.cover {
+  text-transform: uppercase;
+  font-size: 95%;
 }
 
 .toggler--slider {
@@ -122,6 +277,11 @@ nav.pg .toggler--slider {
   align-items: center;
   border: 1px solid black;
   box-sizing: content-box;
+  margin-right: 13px;
+}
+
+.gg-globe-alt {
+  margin-left: 5px;
 }
 
 .toggler--slider--circle {
@@ -255,7 +415,6 @@ a {
   width: 250px;
   display: flex;
   justify-content: center;
-  color: #9a4a25;
   font-size: 105%;
   align-content: center;
 }
@@ -328,4 +487,107 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.navbar__colorPickerFormLocal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(44, 20, 15, 0.856);
+
+  padding-top: 10px;
+  font-family: met;
+
+  color: #c0bcba;
+  padding-bottom: 15px;
+  border-radius: 5px;
+  width: 250px;
+
+  margin-top: 320px;
+  margin-right: 10px;
+  padding-bottom: px;
+  z-index: 100;
+  right: 0;
+}
+
+.navbar__colorPickerFormLocal > button {
+  background: none;
+  border: none;
+  outline: inherit;
+  font-size: 15px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+  color: inherit;
+  border-bottom: 1px solid rgba(182, 172, 172, 0.575);
+  width: 100%;
+  padding: 9px;
+}
+
+.navbar__colorPickerFormLocal > button > p {
+  padding: 0px;
+  margin: 0;
+}
+
+.navbar__colorPickerFormLocal > button:active {
+  transform: scale(0.9);
+}
+
+.colorPickerFormSwitcher {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-bottom: -15px;
+  margin-left: 5px;
+
+  padding-top: 20px;
+}
+.colorPickerFormLanguage {
+  align-self: flex-end;
+  margin-right: 11px;
+
+  margin-bottom: 10px;
+}
+
+.navbar__colorPickerFormLocal > span > button {
+  align-self: flex-end;
+
+  background: none;
+  border: 1.5px solid rgba(182, 172, 172, 0.315);
+  font-size: 13px;
+  border-radius: 3px;
+  color: inherit;
+}
+
+.buttonCircle {
+  width: 15px;
+  border: 2px solid black;
+  height: 15px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.dark-theme {
+  background-color: black;
+}
+
+.light-theme {
+  background-color: white;
+}
+
+.cream-theme {
+  background-color: beige;
+}
+
+.blue-theme {
+  background-color: #d5f3f8;
+}
+
+button:has(.diffinplaylist) {
+  font-family: "Metal Mania", cursive;
+  color: rgb(184, 86, 7);
+}
+.diffinplaylist {
+  background-color: #67290d;
 }
