@@ -97,8 +97,13 @@ export default function Navbar(props) {
               </button>
             </Form>
           ) : null
-        ) : null}
-        <div className="navbar__colorPickerFormGlobal"></div>
+        ) : showColorMenu ? (
+          <div className="navbar__indexPage-alert">
+            YOU CAN'T CHANGE THE THEME OF MY PLAYLIST!!
+          </div>
+        ) : (
+          <></>
+        )}
       </nav>
     </>
   );
