@@ -7,7 +7,6 @@ import { Link, useRouteError } from "react-router-dom";
 
 function Error() {
   const error = useRouteError();
-  console.error(error);
   return (
     <div className="error">
       <h1>Uh, Oh! </h1>
